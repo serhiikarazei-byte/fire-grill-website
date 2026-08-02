@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire Grill | Grill Bar Bratislava</title>
+<style>
+  :root{
+    --black:#141210;
+    --dark:#1e1a17;
+    --red:#c0392b;
+    --orange:#ff6b1a;
+    --cream:#f6efe6;
+    --gold:#d4a24c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Segoe UI', Tahoma, sans-serif;
+    background:var(--cream);
+    color:var(--black);
+    line-height:1.6;
+  }
+  h1,h2,h3{ font-family:'Georgia', serif; letter-spacing:1px; }
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; }
+  img{ max-width:100%; display:block; }
+
+  header{
+    background:var(--black);
+    color:var(--cream);
+    position:sticky; top:0; z-index:100;
+    box-shadow:0 2px 10px rgba(0,0,0,.4);
+  }
+  .navbar{
+    display:flex; align-items:center; justify-content:space-between;
+    max-width:1200px; margin:0 auto; padding:14px 24px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-size:1.5rem; font-weight:bold; color:var(--cream);
+  }
+  .logo span{ color:var(--orange); }
+  nav ul{ display:flex; gap:28px; }
+  nav a{
+    font-weight:600; text-transform:uppercase; font-size:.85rem;
+    padding:6px 2px; border-bottom:2px solid transparent;
+    transition:.2s;
+  }
+  nav a:hover{ border-color:var(--orange); color:var(--orange); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); font-size:1.6rem; cursor:pointer; }
+
+  .hero{
+    background:
+      linear-gradient(rgba(10,8,6,.75), rgba(10,8,6,.85)),
+      repeating-linear-gradient(45deg, #2a1c14, #2a1c14 20px, #201510 20px, #201510 40px);
+    color:var(--cream);
+    text-align:center;
+    padding:110px 20px;
+  }
+  .hero h1{
+    font-size:3.2rem;
+    color:var(--cream);
+    text-shadow:0 0 20px rgba(255,107,26,.6);
+  }
+  .hero h1 span{ color:var(--orange); }
+  .hero p{ margin-top:16px; font-size:1.2rem; color:var(--gold); }
+  .hero .cta{
+    margin-top:32px; display:inline-flex; gap:16px; flex-wrap:wrap; justify-content:center;
+  }
+  .btn{
+    display:inline-block; padding:14px 30px; border-radius:4px;
+    font-weight:700; text-transform:uppercase; letter-spacing:.5px;
+    transition:.25s; cursor:pointer; border:2px solid transparent;
+  }
+  .btn-primary{ background:var(--red); color:#fff; }
+  .btn-primary:hover{ background:#a32e20; }
+  .btn-outline{ border-color:var(--cream); color:var(--cream); }
+  .btn-outline:hover{ background:var(--cream); color:var(--black); }
+
+  section{ padding:70px 20px; }
+  .container{ max-width:1100px; margin:0 auto; }
+  .section-title{
+    text-align:center; margin-bottom:12px; font-size:2.2rem; color:var(--black);
+  }
+  .section-title span{ color:var(--red); }
+  .section-sub{
+    text-align:center; color:#6b6055; margin-bottom:48px; font-style:italic;
+  }
+
+  .about{ background:var(--cream); }
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+  }
+  .about-box{
+    background:var(--black); color:var(--cream); padding:40px; border-radius:8px;
+    border-left:6px solid var(--orange);
+  }
+  .about-box h3{ color:var(--orange); margin-bottom:14px; }
+  .info-badges{ display:flex; gap:16px; margin-top:24px; flex-wrap:wrap; }
+  .badge{
+    background:var(--dark); padding:10px 16px; border-radius:30px;
+    font-size:.85rem; border:1px solid var(--gold); color:var(--gold);
+  }
+
+  .menu{ background:#efe6d8; }
+  .menu-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr));
+    gap:36px;
+  }
+  .menu-category h3{
+    color:var(--red); border-bottom:2px solid var(--red);
+    padding-bottom:8px; margin-bottom:18px; font-size:1.4rem;
+  }
+  .menu-item{
+    display:flex; justify-content:space-between; gap:10px;
+    padding:10px 0; border-bottom:1px dashed #c9bda9;
+  }
+  .menu-item .name{ font-weight:600; }
+  .menu-item .desc{ display:block; font-size:.82rem; color:#7a6f5f; font-weight:400; }
+  .menu-item .price{ font-weight:700; color:var(--black); white-space:nowrap; }
+  .menu-note{
+    text-align:center; margin-top:36px; font-size:.9rem; color:#8a7c68;
+  }
+
+  .bulk{
+    background:var(--black); color:var(--cream);
+  }
+  .bulk-grid{
+    display:grid; grid-template-columns:1fr 1.1fr; gap:50px;
+  }
+  .bulk-text h2{ color:var(--orange); font-size:2rem; margin-bottom:18px; }
+  .bulk-text ul{ margin-top:20px; }
+  .bulk-text li{ margin-bottom:10px; padding-left:26px; position:relative; }
+  .bulk-text li::before{
+    content:"🔥"; position:absolute; left:0;
+  }
+  form.order-form{
+    background:var(--dark); padding:34px; border-radius:10px;
+    border:1px solid #3a322a;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .form-group{ display:flex; flex-direction:column; margin-bottom:16px; }
+  .form-group label{ font-size:.85rem; margin-bottom:6px; color:var(--gold); }
+  .form-group input, .form-group select, .form-group textarea{
+    padding:11px 12px; border-radius:5px; border:1px solid #4a4038;
+    background:#141210; color:var(--cream); font-size:.95rem; font-family:inherit;
+  }
+  .form-group textarea{ resize:vertical; min-height:80px; }
+  .order-form .btn-primary{ width:100%; margin-top:8px; }
+  .form-note{ font-size:.75rem; color:#9a8f80; margin-top:14px; text-align:center; }
+
+  .info-section{ background:var(--cream); }
+  .info-grid{
+    display:grid; grid-template-columns:1fr 1fr 1.2fr; gap:30px;
+  }
+  .info-card{
+    background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.06);
+    border-top:4px solid var(--red);
+  }
+  .info-card h3{ color:var(--red); margin-bottom:16px; }
+  .hours-row{ display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #eee; font-size:.95rem; }
+  .hours-row.today{ font-weight:700; color:var(--red); }
+  .contact-line{ display:flex; gap:10px; margin-bottom:12px; align-items:flex-start; }
+  .contact-line .ico{ color:var(--red); font-size:1.1rem; }
+  .map-frame{ border-radius:8px; overflow:hidden; border:1px solid #ddd; height:260px; }
+  .map-frame iframe{ width:100%; height:100%; border:0; }
+  .social-links{ display:flex; gap:12px; margin-top:14px; }
+  .social-links a{
+    background:var(--black); color:var(--cream); padding:8px 16px; border-radius:30px; font-size:.85rem;
+  }
+  .disclaimer{
+    margin-top:10px; font-size:.78rem; color:#a06a30; background:#fdf3e3;
+    padding:10px 14px; border-radius:6px; border:1px dashed #d4a24c;
+  }
+
+  footer{
+    background:var(--black); color:#9a8f80; text-align:center; padding:30px 20px; font-size:.85rem;
+  }
+  footer .flame{ color:var(--orange); }
+
+  @media (max-width:860px){
+    nav{ display:none; }
+    .nav-toggle{ display:block; }
+    .about-grid, .bulk-grid, .info-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .hero h1{ font-size:2.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">🔥<span>FIRE</span> GRILL</div>
+    <nav>
+      <ul>
+        <li><a href="#about">O nás</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#bulk">Objednávka mäsa</a></li>
+        <li><a href="#hours">Hodiny</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>FIRE <span>GRILL</span></h1>
+  <p>The Real Taste of Fire — grilbar v srdci Bratislavy</p>
+  <div class="cta">
+    <a href="#menu" class="btn btn-primary">Pozrieť menu</a>
+    <a href="#bulk" class="btn btn-outline">Objednať mäso vopred</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div>
+      <h2 class="section-title">O <span>nás</span></h2>
+      <p>Fire Grill je grilbar postavený na jednoduchej filozofii: oheň, dym a poctivé mäso. Grilujeme denne priamo pred zákazníkmi na križovatke Karadžičova / Záhradnícka, súčasť obľúbenej street food miesta v Bratislave – Ružinove.</p>
+      <p style="margin-top:14px;">Či už si dáte rýchly obed, večeru s priateľmi, alebo si u nás vopred objednáte väčšie množstvo mäsa na rodinnú oslávu či firemný event — vždy si odnešiete ozắjstnú chuť ohňa.</p>
+    </div>
+    <div class="about-box">
+      <h3>Rýchle info</h3>
+      <p>📍 Križovatka Karadžičova / Záhradnícka, Bratislava – Ružinov</p>
+      <p style="margin-top:10px;">📞 +421 948 290 020</p>
+      <p style="margin-top:10px;">🕛 Denne 12:00 – 21:00*</p>
+      <div class="info-badges">
+        <span class="badge">🛵 Bolt Food</span>
+        <span class="badge">🛵 Wolt</span>
+        <span class="badge">🥩 Objednávky vopred</span>
+      </div>
+      <p style="margin-top:16px; font-size:.78rem; color:#c9bda9;">*otváracie hodiny sa v rôznych zdrojoch mierne lišia — odporúčame potvrdiť pred prvou návštevou.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="container">
+    <h2 class="section-title">Naše <span>Menu</span></h2>
+    <p class="section-sub">Orientačná ponuka podľa aktuálnej ceny na grile — presné zloženie a ceny odporúčame potvrdiť pred spustením webu</p>
+    <div class="menu-grid">
+
+      <div class="menu-category">
+        <h3>Z grilu</h3>
+        <div class="menu-item">
+          <span class="name">Kuracie šašlíky<span class="desc">marinované, grilované na drevenom uhlí</span></span>
+          <span class="price">10,50 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Bravčové šašlíky<span class="desc">marinované, grilované na drevenom uhlí</span></span>
+          <span class="price">10,50 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Klobása (8 ks)<span class="desc">domáca grilovaná klobása</span></span>
+          <span class="price">9,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Bravčové rebrá<span class="desc">pomaly grilované, BBQ marináda</span></span>
+          <span class="price">na dopyt</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Hovädzí steak<span class="desc">grilovaný na uhlí</span></span>
+          <span class="price">19,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Mäsový tanier 2 kg<span class="desc">mix grilovaného mäsa pre viac osôb</span></span>
+          <span class="price">60,00 €</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Prílohy</h3>
+        <div class="menu-item">
+          <span class="name">Hranolky</span>
+          <span class="price">4,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Domáce zemiaky</span>
+          <span class="price">4,50 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Zemiaky so slaninou a bryndzou</span>
+          <span class="price">6,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Grilovaná kukurica</span>
+          <span class="price">5,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Grilovaná zelenina</span>
+          <span class="price">na dopyt</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Omáčky &amp; doplnky</h3>
+        <div class="menu-item">
+          <span class="name">Cesnaková omáčka</span>
+          <span class="price">1,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">BBQ omáčka</span>
+          <span class="price">1,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Pikantná omáčka</span>
+          <span class="price">1,00 €</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Domáci chlieb</span>
+          <span class="price">1,50 €</span>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3>Nápoje</h3>
+        <div class="menu-item">
+          <span class="name">Pivo (0,5 l)</span>
+          <span class="price">na dopyt</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Nealko / limonáda</span>
+          <span class="price">na dopyt</span>
+        </div>
+        <div class="menu-item">
+          <span class="name">Voda</span>
+          <span class="price">na dopyt</span>
+        </div>
+      </div>
+
+    </div>
+    <p class="menu-note">Kompletný a zäväzný cenník nájdete priamo v prevádzke alebo na Instagrame @firegrill_official.</p>
+  </div>
+</section>
+
+<section class="bulk" id="bulk">
+  <div class="container bulk-grid">
+    <div class="bulk-text">
+      <h2>Objednajte si mäso <br>vopred</h2>
+      <p>Plánujete rodinnú oslávu, firemný event alebo záhradnú párty? Pripravíme pre vás väčšie množstvo čerstvo marinovaného a grilovaného mäsa presne na mieru — stači vyplniť formulár a ozveme sa vám s potvrdením a cenovou ponukou.</p>
+      <ul>
+        <li>Minimálne množstvo od 2 kg mäsa</li>
+        <li>Mix druhov mäsa podľa vlastného výberu</li>
+        <li>Možnosť vyzdvihnutia alebo dohody na rozvoze</li>
+        <li>Odporúčame objednať aspoň 24–48 hodín vopred</li>
+      </ul>
+    </div>
+
+    <form class="order-form" onsubmit="return handleOrderSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Meno a priezvisko *</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefón *</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="meat">Druh mäsa *</label>
+          <select id="meat" name="meat" required>
+            <option value="">Vyberte...</option>
+            <option value="hovadzi">Hovädzí steak</option>
+            <option value="bravcove">Bravčové mäso / rebrá</option>
+            <option value="kuracie">Kuracie šašlíky</option>
+            <option value="klobasa">Klobása</option>
+            <option value="mix">Mix podľa výberu reštaurácie</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Množstvo (kg) *</label>
+          <input type="number" id="quantity" name="quantity" min="2" step="0.5" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="date">Dátum vyzdvihnutia *</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="time">Preferovaný čas</label>
+          <input type="time" id="time" name="time">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="note">Poznámka (marináda, alergie, spôsob vyzdvihnutia...)</label>
+        <textarea id="note" name="note"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Odoslať dopyt</button>
+      <p class="form-note">Odoslaním formulára vás náš tím kontaktuje telefonicky alebo e-mailom s potvrdením objednávky a cenou.</p>
+    </form>
+  </div>
+</section>
+
+<section class="info-section" id="hours">
+  <div class="container info-grid">
+
+    <div class="info-card">
+      <h3>Otváracie hodiny</h3>
+      <div class="hours-row"><span>Pondelok</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Utorok</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Streda</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Štvrtok</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Piatok</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Sobota</span><span>12:00 – 21:00</span></div>
+      <div class="hours-row"><span>Nedeľa</span><span>12:00 – 21:00</span></div>
+      <p class="disclaimer">⚠️ Na sociálnych sieťach sme našli aj údaj 11:00–22:00. Odporúčame si hodiny overiť priamo v prevádzke pred zverejnením webu.</p>
+    </div>
+
+    <div class="info-card" id="contact">
+      <h3>Kontakt</h3>
+      <div class="contact-line"><span class="ico">📍</span><span>Križovatka Karadžičova / Záhradnícka, 821 08 Bratislava – Ružinov</span></div>
+      <div class="contact-line"><span class="ico">📞</span><span>+421 948 290 020</span></div>
+      <div class="contact-line"><span class="ico">📷</span><span>Instagram: @firegrill_official</span></div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/firegrill_official/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook (Meet Point)</a>
+      </div>
+      <p class="disclaimer">Fire Grill je súčasťou Meet Point Street Food Court a zdieľa s ním Facebook stránku — samostatné FB Fire Grill sme nenašli.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>Nájdete nás tu</h3>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Z%C3%A1hradn%C3%ADcka%2024%2C%20Bratislava&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Fire Grill Bratislava — <span class="flame">The Real Taste of Fire</span> 🔥</p>
+  <p style="margin-top:6px;">Toto je návrh webovej stránky vytvorený na základe verejne dostupných informácií z Instagramu. Pred spustením odporúčame overiť všetky údaje priamo s prevádzkou.</p>
+</footer>
+
+<script>
+  function handleOrderSubmit(e){
+    e.preventDefault();
+    alert("Toto je len návrh stránky (demo). Formulár je funkčný vizuálne, no na skutočné odosielanie objednávok bude potrebné pripojiť backend / e-mailovú službu (napr. formsubmit, EmailJS, alebo vlastný server).");
+    return false;
+  }
+</script>
+
+</body>
+</html>
