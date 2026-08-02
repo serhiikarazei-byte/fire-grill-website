@@ -58,16 +58,9 @@
     padding:190px 20px;
       position:relative; overflow:visible;
   }
-.hero-pig{ position:absolute; top:6px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; z-index:2; pointer-events:none; }
-      .hero-pig .pig{ font-size:8.5rem; line-height:1; filter:sepia(.6) saturate(2.4) hue-rotate(-10deg) brightness(.95) contrast(1.1); animation:pigRock 2.4s ease-in-out infinite; transform-origin:50% 85%; }
-      .hero-pig .coals{ width:220px; height:38px; border-radius:50%; background:radial-gradient(ellipse at center, #ff5a1f 0%, #c0392b 42%, #7a1d0e 68%, transparent 80%); filter:blur(2px); animation:coalsGlow 1.2s ease-in-out infinite alternate; box-shadow:0 0 45px 12px rgba(255,90,20,.5); }
-      .hero-pig .smoke{ position:absolute; bottom:22px; width:16px; height:16px; border-radius:50%; background:rgba(220,220,220,.4); filter:blur(5px); animation:smokeRise 3s ease-in infinite; }
-      .hero-pig .smoke.s1{ left:-46px; animation-delay:0s; }
-      .hero-pig .smoke.s2{ left:6px; animation-delay:1s; }
-      .hero-pig .smoke.s3{ left:50px; animation-delay:2s; }
-      @keyframes pigRock{ 0%,100%{ transform:rotate(-6deg); } 50%{ transform:rotate(6deg); } }
-      @keyframes coalsGlow{ 0%{ opacity:.7; transform:scale(.95); } 100%{ opacity:1; transform:scale(1.08); } }
-      @keyframes smokeRise{ 0%{ opacity:0; transform:translateY(0) scale(.6); } 25%{ opacity:.55; } 100%{ opacity:0; transform:translateY(-90px) scale(1.8); } }
+.hero-video-wrap{ position:absolute; top:6px; left:50%; transform:translateX(-50%); width:190px; height:338px; z-index:2; pointer-events:none; border-radius:18px; overflow:hidden; box-shadow:0 0 45px rgba(255,90,20,.55), 0 0 90px rgba(255,90,20,.3); border:3px solid rgba(255,160,60,.55); }
+        .hero-video-wrap video{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.2) contrast(1.08) brightness(.92); }
+        .hero-video-wrap .glow-overlay{ position:absolute; inset:0; background:linear-gradient(to top, rgba(255,90,20,.4), transparent 45%); pointer-events:none; }
   .hero h1{
     font-size:3.2rem;
     color:var(--cream);
@@ -221,7 +214,7 @@
 </header>
 
 <section class="hero">
-  <div class="hero-pig" aria-hidden="true"><div class="smoke s1"></div><div class="smoke s2"></div><div class="smoke s3"></div><div class="pig">🐖</div><div class="coals"></div></div>
+  <div class="hero-video-wrap" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="https://videos.pexels.com/video-files/38700453/16439759_1440_2560_25fps.mp4" type="video/mp4"></video><div class="glow-overlay"></div></div>
   <h1>FIRE <span>GRILL</span></h1>
   <p>The Real Taste of Fire — grilbar v srdci Bratislavy</p>
   <div class="cta">
