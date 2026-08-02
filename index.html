@@ -55,15 +55,19 @@
       repeating-linear-gradient(45deg, #2a1c14, #2a1c14 20px, #201510 20px, #201510 40px);
     color:var(--cream);
     text-align:center;
-    padding:110px 20px;
+    padding:150px 20px;
       position:relative; overflow:visible;
   }
-  .hero-skewer{ position:absolute; top:18px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; z-index:2; pointer-events:none; }
-  .hero-skewer .string{ width:2px; height:38px; background:linear-gradient(to bottom, rgba(246,239,230,.7), rgba(246,239,230,.05)); }
-  .hero-skewer .stick{ font-size:2.1rem; line-height:1; transform-origin:50% 50%; animation:skewerTurn 2.6s linear infinite; }
-  .hero-skewer .coals{ width:64px; height:14px; margin-top:4px; border-radius:50%; background:radial-gradient(ellipse at center, var(--orange) 0%, var(--red) 45%, transparent 75%); filter:blur(3px); animation:coalsGlow 1.4s ease-in-out infinite alternate; }
-  @keyframes skewerTurn{ 0%{ transform:rotate(0deg); } 50%{ transform:rotate(180deg); } 100%{ transform:rotate(360deg); } }
-  @keyframes coalsGlow{ 0%{ opacity:.55; transform:scale(.92); } 100%{ opacity:1; transform:scale(1.06); } }
+.hero-pig{ position:absolute; top:6px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; z-index:2; pointer-events:none; }
+      .hero-pig .pig{ font-size:6rem; line-height:1; filter:sepia(.6) saturate(2.4) hue-rotate(-10deg) brightness(.95) contrast(1.1); animation:pigRock 2.4s ease-in-out infinite; transform-origin:50% 85%; }
+      .hero-pig .coals{ width:170px; height:30px; border-radius:50%; background:radial-gradient(ellipse at center, #ff5a1f 0%, #c0392b 42%, #7a1d0e 68%, transparent 80%); filter:blur(2px); animation:coalsGlow 1.2s ease-in-out infinite alternate; box-shadow:0 0 45px 12px rgba(255,90,20,.5); }
+      .hero-pig .smoke{ position:absolute; bottom:22px; width:16px; height:16px; border-radius:50%; background:rgba(220,220,220,.4); filter:blur(5px); animation:smokeRise 3s ease-in infinite; }
+      .hero-pig .smoke.s1{ left:-46px; animation-delay:0s; }
+      .hero-pig .smoke.s2{ left:6px; animation-delay:1s; }
+      .hero-pig .smoke.s3{ left:50px; animation-delay:2s; }
+      @keyframes pigRock{ 0%,100%{ transform:rotate(-6deg); } 50%{ transform:rotate(6deg); } }
+      @keyframes coalsGlow{ 0%{ opacity:.7; transform:scale(.95); } 100%{ opacity:1; transform:scale(1.08); } }
+      @keyframes smokeRise{ 0%{ opacity:0; transform:translateY(0) scale(.6); } 25%{ opacity:.55; } 100%{ opacity:0; transform:translateY(-90px) scale(1.8); } }
   .hero h1{
     font-size:3.2rem;
     color:var(--cream);
@@ -217,7 +221,7 @@
 </header>
 
 <section class="hero">
-  <div class="hero-skewer" aria-hidden="true"><div class="string"></div><div class="stick">🍢</div><div class="coals"></div></div>
+  <div class="hero-pig" aria-hidden="true"><div class="smoke s1"></div><div class="smoke s2"></div><div class="smoke s3"></div><div class="pig">🐖</div><div class="coals"></div></div>
   <h1>FIRE <span>GRILL</span></h1>
   <p>The Real Taste of Fire — grilbar v srdci Bratislavy</p>
   <div class="cta">
