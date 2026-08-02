@@ -186,7 +186,11 @@
   footer .flame{ color:var(--orange); }
 
   @media (max-width:860px){
-    nav{ display:none; }
+    .navbar{ position:relative; flex-wrap:wrap; }
+          nav{ display:none; width:100%; order:3; }
+          nav ul{ flex-direction:column; gap:0; width:100%; background:var(--dark); border-radius:8px; margin-top:14px; overflow:hidden; }
+          nav ul li a{ display:block; padding:14px 20px; border-bottom:1px solid rgba(246,239,230,.08); }
+          .navbar.nav-open nav{ display:block; }
     .nav-toggle{ display:block; }
     .about-grid, .bulk-grid, .info-grid{ grid-template-columns:1fr; }
     .form-row{ grid-template-columns:1fr; }
@@ -465,6 +469,19 @@
     alert("Toto je len návrh stránky (demo). Formulár je funkčný vizuálne, no na skutočné odosielanie objednávok bude potrebné pripojiť backend / e-mailovú službu (napr. formsubmit, EmailJS, alebo vlastný server).");
     return false;
   }
+      var navToggle = document.querySelector('.nav-toggle');
+      var navbarEl = document.querySelector('.navbar');
+      if(navToggle && navbarEl){
+              navToggle.addEventListener('click', function(){
+                        navbarEl.classList.toggle('nav-open');
+              });
+              var navLinks = document.querySelectorAll('nav a');
+              for(var i=0;i<navLinks.length;i++){
+                        navLinks[i].addEventListener('click', function(){
+                                    navbarEl.classList.remove('nav-open');
+                        });
+              }
+      }
 </script>
 
 </body>
