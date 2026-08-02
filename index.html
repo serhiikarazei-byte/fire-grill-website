@@ -56,7 +56,14 @@
     color:var(--cream);
     text-align:center;
     padding:110px 20px;
+      position:relative; overflow:visible;
   }
+  .hero-skewer{ position:absolute; top:18px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; z-index:2; pointer-events:none; }
+  .hero-skewer .string{ width:2px; height:38px; background:linear-gradient(to bottom, rgba(246,239,230,.7), rgba(246,239,230,.05)); }
+  .hero-skewer .stick{ font-size:2.1rem; line-height:1; transform-origin:50% 50%; animation:skewerTurn 2.6s linear infinite; }
+  .hero-skewer .coals{ width:64px; height:14px; margin-top:4px; border-radius:50%; background:radial-gradient(ellipse at center, var(--orange) 0%, var(--red) 45%, transparent 75%); filter:blur(3px); animation:coalsGlow 1.4s ease-in-out infinite alternate; }
+  @keyframes skewerTurn{ 0%{ transform:rotate(0deg); } 50%{ transform:rotate(180deg); } 100%{ transform:rotate(360deg); } }
+  @keyframes coalsGlow{ 0%{ opacity:.55; transform:scale(.92); } 100%{ opacity:1; transform:scale(1.06); } }
   .hero h1{
     font-size:3.2rem;
     color:var(--cream);
@@ -206,6 +213,7 @@
 </header>
 
 <section class="hero">
+  <div class="hero-skewer" aria-hidden="true"><div class="string"></div>div><div class="stick">🍢</div>div><div class="coals"></div>div></div>div>
   <h1>FIRE <span>GRILL</span></h1>
   <p>The Real Taste of Fire — grilbar v srdci Bratislavy</p>
   <div class="cta">
