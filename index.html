@@ -386,11 +386,11 @@
       <div class="form-row">
         <div class="form-group">
           <label for="date">Dátum vyzdvihnutia *</label>
-          <input type="date" id="date" name="date" required>
+          <input type="text" id="date" name="date" lang="sk" placeholder="dd.mm.rrrr" pattern="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}" inputmode="numeric" required>
         </div>
         <div class="form-group">
           <label for="time">Preferovaný čas</label>
-          <input type="time" id="time" name="time">
+          <input type="text" id="time" name="time" lang="sk" placeholder="hh:mm" inputmode="numeric">
         </div>
       </div>
 
@@ -436,10 +436,11 @@
       <h3>Nájdete nás tu</h3>
       <div class="map-frame">
         <iframe
-          src="https://www.google.com/maps?q=Z%C3%A1hradn%C3%ADcka%2024%2C%20Bratislava&output=embed"
+          src="https://www.google.com/maps?q=Z%C3%A1hradn%C3%ADcka%2024%2C%20Bratislava&hl=sk&output=embed"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
+      <p class="disclaimer">Jazyk názvov na mape môže byť stale ovplyvnený jazykovým nastavením prehliadača / Google účtu návštevníka.</p>
     </div>
 
   </div>
